@@ -10,36 +10,56 @@
 </head>
 
 <body>
-    <div class="container">
-
-        <div class="text-center">
-            <h1>DATA KASUS PROVINSI</h1>
-        </div>
-        <div class="row">
-            @foreach($data as $provinsi)
-                <div class="col-sm-4 mb-3">
-                    <div class="card text-white bg-danger">
-                        <div class="card-header">
-                            {{ $provinsi['attributes']['Provinsi'] }}
-                        </div>
-                        <div class="card-body">
-                            <b>
-                                <h5 class="card-title">
-                                    {{ $provinsi['attributes']['Kasus_Posi'] }}
-                                    Kasus</h5>
-                            </b>
-                            <p>Sembuh =>
-                                {{ $provinsi['attributes']['Kasus_Semb'] }}
-                            </p>
-                            <p>Meninggal =>
-                                {{ $provinsi['attributes']['Kasus_Meni'] }}
-                            </p>
+        <div class="container">
+            <div>
+                <h3>DATA PROVINSI</h3>
+            </div>
+            <div class="row">
+                <form action="{{ url('/') }}" method="get">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Pilih Provinsi</label>
+                        <select class="form-control" name="provi" id="exampleFormControlSelect1">
+                            <option selected disabled value="">Choose...</option>
+                            @foreach($data as $item)
+                                <option
+                                    value="{{ $item['attributes']['Provinsi'] }}">
+                                    {{ $item['attributes']['Provinsi'] }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info btn-block">Cari Data</button>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                @foreach($data as $provinsi)
+                @if ($provinsi['attributes']['Provinsi']==$keyprovi)
+                    <div class="col-sm-4 mb-3">
+                        <div class="card text-white bg-danger">
+                            <div class="card-header">
+                                {{ $provinsi['attributes']['Provinsi'] }}
+                            </div>
+                            <div class="card-body">
+                                <b>
+                                    <h5 class="card-title">
+                                        {{ $provinsi['attributes']['Kasus_Posi'] }}
+                                        Kasus</h5>
+                                </b>
+                                <p>Sembuh =>
+                                    {{ $provinsi['attributes']['Kasus_Semb'] }}
+                                </p>
+                                <p>Meninggal =>
+                                    {{ $provinsi['attributes']['Kasus_Meni'] }}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endif
+                @endforeach
+            </div>
         </div>
-    </div>
 </body>
 
 </html>
