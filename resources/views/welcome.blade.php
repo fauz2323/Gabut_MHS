@@ -15,7 +15,7 @@
                 <h3>DATA PROVINSI</h3>
             </div>
             <div class="row">
-                <form action="{{ url('/') }}" method="get">
+                <form action="{{ url('/provinsi') }}" method="get">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Pilih Provinsi</label>
                         <select class="form-control" name="provi" id="exampleFormControlSelect1">
