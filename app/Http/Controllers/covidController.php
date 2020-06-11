@@ -15,16 +15,11 @@ class covidController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->has('provi')){
-            $keyprovi  = $request->provi;
-        }
-        else{
-            $keyprovi = "DKI Jakarta";
-        }
-        $prov = Http::get('https://api.kawalcorona.com/indonesia/provinsi');
-        $data = $prov->json();
+        $indo = Http::get('https://api.kawalcorona.com/indonesia');
+        $data = $indo->json();
 
-        return view('welcome', compact('data','keyprovi'));
+        return view('index', compact('data'));
+
     }
 
     /**
@@ -91,5 +86,33 @@ class covidController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function provinsi(Request $request)
+    {
+        if($request->has('provi')){
+            $keyprovi  = $request->provi;
+        }
+        else{
+            $keyprovi = "DKI Jakarta";
+        }
+        $prov = Http::get('https://api.kawalcorona.com/indonesia/provinsi');
+        $data = $prov->json();
+
+        return view('welcome', compact('data','keyprovi'));
+    }
+
+    public function global(Request $request)
+    {
+        if($request->has('dunia')){
+            $keydunia  = $request->dunia;
+        }
+        else{
+            $keydunia = "Indonesia";
+        }
+        $global = Http::get('https://api.kawalcorona.com');
+        $data = $global->json();
+
+        return view('global', compact('data','keydunia'));
     }
 }
