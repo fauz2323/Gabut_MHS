@@ -11,10 +11,8 @@
 
 <body>
         <div class="container">
-            <div>
-                <h3>DATA DUNIA</h3>
-            </div>
-            <div class="row">
+                <h3 class="text-center">DATA DUNIA</h3>
+            <div class="row justify-content-center">
                 <form action="{{ url('/global') }}" method="get">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Pilih Negara</label>
@@ -33,7 +31,7 @@
                     </div>
                 </form>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                 @foreach($data as $provinsi)
                 @if ($provinsi['attributes']['Country_Region']==$keydunia)
                     <div class="col-sm-4 mb-3">
