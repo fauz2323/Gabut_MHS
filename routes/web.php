@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 route::get('/','covidController@index');
+route::get('/','covidController@global');
+route::get('/',);
