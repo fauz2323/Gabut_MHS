@@ -15,10 +15,16 @@ class covidController extends Controller
      */
     public function index(Request $request)
     {
+        if($request->has('provi')){
+            $keyprovi  = $request->provi;
+        }
+        else{
+            $keyprovi = "DKI Jakarta";
+        }
         $prov = Http::get('https://api.kawalcorona.com/indonesia/provinsi');
         $data = $prov->json();
 
-        return view('welcome', compact('data'));
+        return view('welcome', compact('data','keyprovi'));
     }
 
     /**
