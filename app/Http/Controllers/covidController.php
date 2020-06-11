@@ -15,9 +15,9 @@ class covidController extends Controller
      */
     public function index(Request $request)
     {
-        $response = Http::get('https://api.kawalcorona.com/indonesia/provinsi');
-        $data = $response->json();
-        $listData=[];
+        $prov = Http::get('https://api.kawalcorona.com/indonesia/provinsi');
+        $data = $prov->json();
+
         return view('welcome', compact('data'));
     }
 
